@@ -93,17 +93,25 @@ app.get('/hotels/filter/country/:country', (req, res) => {
 });
 // Endpoint 6: Filter the hotels based on the selected Category
 
-function filterByCategory(hotelsObj, category) {
-  return hotelsObj.category === category;
-}
+// function filterByCategory(hotelsObj, category) {
+//   return hotelsObj.category === category;
+// }
 
-app.get('/hotels/filter/category/:category', (req, res) => {
+// app.get('/hotels/filter/category/:category', (req, res) => {
+//   let category = req.query.category;
+//   let results = hotels.filter((hotelsObj) =>
+//     filterByCategory(hotelsObj, category)
+//   );
+//   res.json(results);
+// });
+
+app.get('/hotels/filter/category', (req, res) => {
   let category = req.query.category;
-  let results = hotels.filter((hotelsObj) =>
-    filterByCategory(hotelsObj, category)
-  );
+
+  let results = hotels.filter((hotel) => hotel.category === category);
   res.json(results);
 });
+
 
 // Endpoint 7: Send all hotels
 app.get('/hotels', (req, res) => {
