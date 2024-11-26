@@ -67,43 +67,30 @@ app.get('/hotels/sort/reviews', (req, res) => {
 });
 
 // Endpoint 4: Filter the hotels based on the Hotel Amenity
-function filterByAmenity(hotelsObj, amenity) {
-  return hotelsObj.amenity === amenity;
-}
-
-app.get('/hotels/filter/amenity/:amenity', (req, res) => {
+app.get('/hotels/filter/amenity', (req, res) => {
   let amenity = req.query.amenity;
-  let results = hotels.filter((hotelsObj) =>
-    filterByAmenity(hotelsObj, amenity)
+
+   let results = hotels.filter(
+    (hotel) => hotel.amenity.toLowerCase() === amenity.toLowerCase()
   );
+
   res.json(results);
 });
+
 
 // Endpoint 5: Filter the hotels based on the selected Country
-function filterByCountry(hotelsObj, country) {
-  return hotelsObj.country === country;
-}
+app.get('/hotels/filter/country', (req, res) => {
+  let country = req.query.country;
 
-app.get('/hotels/filter/country/:country', (req, res) => {
-  let country = req.qyery.country;
-  let results = hotels.filter((hotelsObj) =>
-    filterByCountry(hotelsObj, country)
+  let results = hotels.filter(
+    (hotel) => hotel.country.toLowerCase() === country.toLowerCase()
   );
+
   res.json(results);
 });
+
 // Endpoint 6: Filter the hotels based on the selected Category
 
-// function filterByCategory(hotelsObj, category) {
-//   return hotelsObj.category === category;
-// }
-
-// app.get('/hotels/filter/category/:category', (req, res) => {
-//   let category = req.query.category;
-//   let results = hotels.filter((hotelsObj) =>
-//     filterByCategory(hotelsObj, category)
-//   );
-//   res.json(results);
-// });
 
 app.get('/hotels/filter/category', (req, res) => {
   let category = req.query.category;
