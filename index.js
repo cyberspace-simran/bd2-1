@@ -53,7 +53,7 @@ app.get('/hotels/sort/rating', (req, res) => {
 function sortByReviews(reviews, a, b) {
   if (reviews === 'least-to-most') {
     return a.reviews - b.reviews; // Ascending order
-  } else if (rating === 'most-to-least') {
+  } else if (reviews === 'most-to-least') {
     return b.reviews - a.reviews; // Descending order
   }
 }
