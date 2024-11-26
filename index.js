@@ -108,7 +108,9 @@ app.get('/hotels/filter/country/:country', (req, res) => {
 app.get('/hotels/filter/category', (req, res) => {
   let category = req.query.category;
 
-  let results = hotels.filter((hotel) => hotel.category === category);
+  let results = hotels.filter(
+    (hotel) => hotel.category.toLowerCase() === category.toLowerCase()
+  );
   res.json(results);
 });
 
