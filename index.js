@@ -72,7 +72,7 @@ function filterByAmenity(hotelsObj, amenity) {
 }
 
 app.get('/hotels/filter/amenity/:amenity', (req, res) => {
-  let amenity = req.params.amenity;
+  let amenity = req.query.amenity;
   let results = hotels.filter((hotelsObj) =>
     filterByAmenity(hotelsObj, amenity)
   );
@@ -85,7 +85,7 @@ function filterByCountry(hotelsObj, country) {
 }
 
 app.get('/hotels/filter/country/:country', (req, res) => {
-  let country = req.params.country;
+  let country = req.qyery.country;
   let results = hotels.filter((hotelsObj) =>
     filterByCountry(hotelsObj, country)
   );
@@ -98,7 +98,7 @@ function filterByCategory(hotelsObj, category) {
 }
 
 app.get('/hotels/filter/category/:category', (req, res) => {
-  let category = req.params.category;
+  let category = req.query.category;
   let results = hotels.filter((hotelsObj) =>
     filterByCategory(hotelsObj, category)
   );
